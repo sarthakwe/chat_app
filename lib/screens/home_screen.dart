@@ -1,19 +1,17 @@
+import 'package:chat_app/helpers.dart';
 import 'package:chat_app/pages/calls_page.dart';
 import 'package:chat_app/pages/contacts_page.dart';
 import 'package:chat_app/pages/messages_page.dart';
 import 'package:chat_app/pages/notifications_page.dart';
 import 'package:chat_app/theme.dart';
+import 'package:chat_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   final ValueNotifier<int> pageIndex = ValueNotifier(0);
+  final ValueNotifier<String> title = ValueNotifier('Messages');
 
   final pages = const [
     MessagesPage(),
@@ -22,9 +20,48 @@ class _HomeScreenState extends State<HomeScreen> {
     ContactsPage(),
   ];
 
+  final pageTitles = const ['Messages', 'Notifications', 'Calls', 'Contacts'];
+
+  void _onNavigationItemSelected(index) {
+    title.value = pageTitles[index];
+    pageIndex.value = index;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        iconTheme: Theme.of(context).iconTheme,
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: ValueListenableBuilder(
+          valueListenable: title,
+          builder: (BuildContext context, String value, _) {
+            return Text(
+              value,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16,
+              ),
+            );
+          },
+        ),
+        leadingWidth: 54,
+        leading: Align(
+          alignment: Alignment.centerRight,
+          child: IconBackground(
+              icon: Icons.search,
+              onTap: () {
+                print('To do search');
+              }),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 24),
+            child: Avatar.small(url: Helpers.randomPictureUrl()),
+          ),
+        ],
+      ),
       body: ValueListenableBuilder(
         valueListenable: pageIndex,
         builder: (BuildContext context, int value, _) {
@@ -32,9 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
         },
       ),
       bottomNavigationBar: _BottomNavigationBar(
-        onItemSelected: (index) {
-          pageIndex.value = index;
-        },
+        onItemSelected: _onNavigationItemSelected,
       ),
     );
   }

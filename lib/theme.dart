@@ -30,30 +30,40 @@ abstract class AppTheme {
 
   // Light theme and its settings
   static ThemeData light() => ThemeData(
+      appBarTheme: AppBarTheme(
+        foregroundColor: AppColors.textDark, //<-- SEE HERE
+      ),
       brightness: Brightness.light,
       accentColor: accentColor,
       visualDensity: visualDensity,
-      textTheme:
-          GoogleFonts.mulishTextTheme().apply(bodyColor: AppColors.textDark),
+      textTheme: GoogleFonts.mulishTextTheme().apply(
+        bodyColor: AppColors.textDark,
+        displayColor: AppColors.textDark,
+      ),
       backgroundColor: _LightColors.background,
       scaffoldBackgroundColor: _LightColors.background,
       cardColor: _LightColors.card,
       primaryTextTheme: const TextTheme(
-        titleLarge: TextStyle(color: AppColors.textDark),
+        headline6: TextStyle(color: AppColors.textDark),
       ),
       iconTheme: const IconThemeData(color: AppColors.iconDark));
   // Dark theme and its settings
   static ThemeData dark() => ThemeData(
+      appBarTheme: AppBarTheme(
+        foregroundColor: AppColors.textLight, //<-- SEE HERE
+      ),
       brightness: Brightness.dark,
       accentColor: accentColor,
       visualDensity: visualDensity,
-      textTheme:
-          GoogleFonts.mulishTextTheme().apply(bodyColor: AppColors.textLight),
+      textTheme: GoogleFonts.mulishTextTheme().apply(
+        bodyColor: AppColors.textLight,
+        displayColor: AppColors.textLight,
+      ),
       backgroundColor: _DarkColors.background,
       scaffoldBackgroundColor: _DarkColors.background,
       cardColor: _DarkColors.card,
       primaryTextTheme: const TextTheme(
-        titleLarge: TextStyle(color: AppColors.textLight),
+        headline6: TextStyle(color: AppColors.textLight),
       ),
       iconTheme: const IconThemeData(color: AppColors.iconLight));
 }
