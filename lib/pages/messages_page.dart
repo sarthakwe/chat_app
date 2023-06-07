@@ -45,97 +45,100 @@ class _MessageTitle extends StatelessWidget {
   final MessageData messageData;
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 100,
-      margin: const EdgeInsets.symmetric(horizontal: 8),
-      decoration: const BoxDecoration(
-        border: Border(
-          bottom: BorderSide(
-            color: Colors.grey,
-            width: 0.2,
+    return InkWell(
+      onTap: () {},
+      child: Container(
+        height: 100,
+        margin: const EdgeInsets.symmetric(horizontal: 8),
+        decoration: const BoxDecoration(
+          border: Border(
+            bottom: BorderSide(
+              color: Colors.grey,
+              width: 0.2,
+            ),
           ),
         ),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(4.0),
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(10),
-              child: Avatar.medium(
-                url: messageData.profilePicture,
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Row(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: Avatar.medium(
+                  url: messageData.profilePicture,
+                ),
               ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 8),
-                    child: Text(
-                      messageData.senderName,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        letterSpacing: 0.2,
-                        wordSpacing: 1.5,
-                        fontWeight: FontWeight.w900,
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    height: 20,
-                    child: Text(
-                      messageData.message,
-                      overflow: TextOverflow.ellipsis,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: AppColors.textFaded,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-                padding: const EdgeInsets.only(right: 20.0),
+              Expanded(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    const SizedBox(
-                      height: 4,
-                    ),
-                    Text(
-                      messageData.dateMessage.toUpperCase(),
-                      style: const TextStyle(
-                        fontSize: 11,
-                        letterSpacing: -0.2,
-                        fontWeight: FontWeight.w600,
-                        color: AppColors.textFaded,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 8,
-                    ),
-                    Container(
-                      height: 18,
-                      width: 18,
-                      decoration: const BoxDecoration(
-                          color: AppColors.secondary, shape: BoxShape.circle),
-                      child: const Center(
-                        child: Text(
-                          '1',
-                          style: TextStyle(
-                            fontSize: 10,
-                            color: AppColors.textLight,
-                          ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Text(
+                        messageData.senderName,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          letterSpacing: 0.2,
+                          wordSpacing: 1.5,
+                          fontWeight: FontWeight.w900,
                         ),
                       ),
-                    )
+                    ),
+                    SizedBox(
+                      height: 20,
+                      child: Text(
+                        messageData.message,
+                        overflow: TextOverflow.ellipsis,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: AppColors.textFaded,
+                        ),
+                      ),
+                    ),
                   ],
-                )),
-          ],
+                ),
+              ),
+              Padding(
+                  padding: const EdgeInsets.only(right: 20.0),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(
+                        messageData.dateMessage.toUpperCase(),
+                        style: const TextStyle(
+                          fontSize: 11,
+                          letterSpacing: -0.2,
+                          fontWeight: FontWeight.w600,
+                          color: AppColors.textFaded,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Container(
+                        height: 18,
+                        width: 18,
+                        decoration: const BoxDecoration(
+                            color: AppColors.secondary, shape: BoxShape.circle),
+                        child: const Center(
+                          child: Text(
+                            '1',
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: AppColors.textLight,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+            ],
+          ),
         ),
       ),
     );
