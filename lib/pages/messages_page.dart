@@ -1,5 +1,5 @@
 import 'package:chat_app/models/models.dart';
-import 'package:chat_app/screens/screen.dart';
+import 'package:chat_app/screens/screens.dart';
 import 'package:chat_app/theme.dart';
 import 'package:chat_app/widgets/avatar.dart';
 import 'package:faker/faker.dart';
@@ -158,7 +158,7 @@ class _Stories extends StatelessWidget {
     return Card(
       elevation: 0,
       child: SizedBox(
-        height: 134,
+        height: 145,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

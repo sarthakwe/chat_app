@@ -1,8 +1,10 @@
+import 'package:chat_app/app.dart';
 import 'package:chat_app/helpers.dart';
 import 'package:chat_app/pages/calls_page.dart';
 import 'package:chat_app/pages/contacts_page.dart';
 import 'package:chat_app/pages/messages_page.dart';
 import 'package:chat_app/pages/notifications_page.dart';
+import 'package:chat_app/screens/screens.dart';
 import 'package:chat_app/theme.dart';
 import 'package:chat_app/widgets/glowing_action_button.dart';
 import 'package:chat_app/widgets/widgets.dart';
@@ -60,7 +62,15 @@ class HomeScreen extends StatelessWidget {
         actions: [
           Padding(
             padding: const EdgeInsets.only(right: 24),
-            child: Avatar.small(url: Helpers.randomPictureUrl()),
+            child: Hero(
+              tag: 'hero-profile-picture',
+              child: Avatar.small(
+                url: context.currentUserImage,
+                onTap: () {
+                  Navigator.of(context).push(ProfileScreen.route);
+                },
+              ),
+            ),
           ),
         ],
       ),
